@@ -21,6 +21,7 @@
     {% for c in latest_comments_list %}
         <p>
             <strong>{{c.author_name}}</strong>
+            <i>{{c.pub_date}}</i>
             <p>{{c.comment_text}}</p>
         </p>
     {% endfor %}

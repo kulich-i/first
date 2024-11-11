@@ -4,8 +4,8 @@ from django.db import models
 from django.utils import timezone
 
 class Article(models.Model):
-    article_title = models.CharField('название', max_length = 200)
-    article_text = models.TextField('текст')
+    article_title = models.CharField('название статьи', max_length = 200)
+    article_text = models.TextField('текст статьи')
     pub_date = models.DateTimeField('дата')
 
     def __str__(self):
@@ -22,10 +22,12 @@ class Comment(models.Model):
     article = models.ForeignKey(Article, on_delete = models.CASCADE)
     author_name = models.CharField('имя', max_length = 50)
     comment_text = models.CharField('комментарий', max_length = 200)
+    pub_date = models.DateTimeField('дата добавления', auto_now=True)
 
     def __str__(self):
         return self.author_name
 
     class Meta:
         verbose_name = 'Комментарий'
-        verbose_name_plural = 'много Комментариев'
+        verbose_name_plural = 'Комментарии'
+        
