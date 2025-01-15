@@ -4,14 +4,22 @@
 
 {% block content %}
 
+    
     {% if latest_articles_list %}
 
-        {% for a in latest_articles_list %}
-            <a href="{% url 'articles:detail' a.id %}">{{a.article_title}}</a>
-        {% endfor %}
+        <p align="right"><a href="{% url 'articles:Article_create' %}">Создать новую статью </a></p>
 
+        {% for a in latest_articles_list %}
+        <br>    
+        <font size="5"><a href="{% url 'articles:detail' a.id %}">{{a.article_title}}</a></font><br>
+        <i>{{a.pub_date|date:"d M Y H:i"}}</i>
+        <p>{{ a.article_text|slice:":500" }}</p><br>
+        
+        
+        {% endfor %}
+        
     {% else %}
-        не найдено )=
+        не найдено =(
     {% endif %}
 
 {% endblock %}

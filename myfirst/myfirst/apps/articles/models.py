@@ -7,7 +7,18 @@ class Article(models.Model):
     article_title = models.CharField('название статьи', max_length = 200)
     article_text = models.TextField('текст статьи')
     pub_date = models.DateTimeField('дата')
-
+    def short_text(self):
+            # Take the first 100 characters
+            s = self.article_text[:100]
+            
+            # Split by whitespace
+            parts = s.split()
+            
+            # Join all but the last element
+            short_s = " ".join(parts[:-1])
+            
+            return short_s
+    
     def __str__(self):
         return self.article_title
 
@@ -31,3 +42,5 @@ class Comment(models.Model):
         verbose_name = 'Комментарий'
         verbose_name_plural = 'Комментарии'
         
+
+     

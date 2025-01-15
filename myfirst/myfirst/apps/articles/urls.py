@@ -8,4 +8,6 @@ urlpatterns = [
     path('', views.index, name = 'index'),
     path('<int:article_id>/', views.detail, name = 'detail'),
     path('<int:article_id>/leave_comment/', views.leave_comment, name = 'leave_comment'),
-]
+    path('create/', views.ArticlesCreateView.as_view(), name = 'Article_create') # создание новой статьи
+    
+]   
